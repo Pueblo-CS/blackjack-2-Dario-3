@@ -17,6 +17,12 @@ function deal() {
     addPlayerCard(playerHand[0]);
     playerHand.push(getCard()); 
     addPlayerCard(playerHand[1]);
+
+    dealerHand.push(getCard());
+    addDealerCard(dealerHand[0]);
+    
+    addHiddenCard();
+    
 }
 
 function fillDeck() {
@@ -48,6 +54,89 @@ function addPlayerCard(card) {
     let playerArea = document.getElementById("player-area");
     let cardDiv = document.createElement("div");
     cardDiv.setAttribute("class", "card");
+    let faceP = document.createElement("p");
+    let face = card.charAt(0);
 
+    if (face == "T"){
+        faceP.innerHTML = "10";    
+    } else {
+        faceP.innerHTML = face;
+    }
+
+    cardDiv.appendChild(faceP);
+    let suitImg = document.createElement("img");
+    let suit = card.charAt(1);
+
+    
+    if (suit == "c"){
+        suitImg.src = "club.png";
+
+    } 
+    else  if (suit == "s"){
+        suitImg.src = "spade.png";
+
+    } 
+    else  if (suit == "d"){
+        suitImg.src = "diamond.png";
+
+    } 
+    else  if (suit == "h"){
+        suitImg.src = "heart.png";
+        
+    } 
+    
+    cardDiv.appendChild(suitImg);
     playerArea.appendChild(cardDiv);
+    
+
+}
+
+function addHiddenCard(){
+    let cardDiv = document.createElement("div");
+    cardDiv.setAttribute("id", "hidden-card");
+    cardDiv.setAttribute("class", "card");
+    cardDiv.style.backgroundColor = "red";
+
+    document.getElementById("dealer-area").appendChild("dealerHand");// did this part wrong.
+
+}
+
+function addDealerCard(card){
+    let dealerArea = document.getElementById("dealer-area");
+    let cardDiv = document.createElement("div");
+    cardDiv.setAttribute("class", "card");
+    let faceP = document.createElement("p");
+    let face = card.charAt(0);
+
+    if (face == "T"){
+        faceP.innerHTML = "10";    
+    } else {
+        faceP.innerHTML = face;
+    }
+
+    cardDiv.appendChild(faceP);
+    let suitImg = document.createElement("img");
+    let suit = card.charAt(1);
+
+    
+    if (suit == "c"){
+        suitImg.src = "club.png";
+
+    } 
+    else  if (suit == "s"){
+        suitImg.src = "spade.png";
+
+    } 
+    else  if (suit == "d"){
+        suitImg.src = "diamond.png";
+
+    } 
+    else  if (suit == "h"){
+        suitImg.src = "heart.png";
+        
+    } 
+    
+    cardDiv.appendChild(suitImg);
+    dealerArea.appendChild(cardDiv);
+    
 }
